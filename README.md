@@ -1,25 +1,47 @@
-# 안녕하세요, UI/UX설계부터 프론트엔드와 백엔드 그리고 AI까지, 기초부터 다진 **AI 에이전트 엔지니어 (AI Agent Engineer)** 개발자 김지환입니다.
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1D3557,100:2B5FB8&height=200&section=header&text=Kim%20Jihwan&fontSize=56&fontColor=ffffff&fontAlignY=36&desc=AI%20Agent%20Engineer&descSize=20&descAlignY=60&animation=fadeIn" width="100%" alt="Kim Jihwan" />
+
+<img src="https://readme-typing-svg.demolab.com?font=Noto+Sans+KR&weight=700&size=20&duration=4200&pause=1200&color=2B5FB8&center=true&vCenter=true&width=900&height=44&repeat=true&lines=UI%2FUX+%EC%84%A4%EA%B3%84%EB%B6%80%ED%84%B0+%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%EC%99%80+%EB%B0%B1%EC%97%94%EB%93%9C%2C+%EA%B7%B8%EB%A6%AC%EA%B3%A0+AI%EA%B9%8C%EC%A7%80+%EA%B8%B0%EC%B4%88%EB%B6%80%ED%84%B0+%EB%8B%A4%EC%A7%84+AI+Agent+Engineer+%EA%B9%80%EC%A7%80%ED%99%98%EC%9E%85%EB%8B%88%EB%8B%A4" alt="typing" />
 
 
-| 구분 | 내용 |
-|---|---|
-| 거주지 | 경기도 성남시 |
-| 이메일 | agii990114@gmail.com |
-| 자격증 | SQLD, 정보처리기사(필기), 컴퓨터활용능력 2급, GTQ 1급 등 |
+<table>
+<tbody>
+<tr><td align='right'><b>거주지</b></td><td align='left'>경기도 성남시</td></tr>
+<tr><td align='right'><b>이메일</b></td><td align='left'>agii990114@gmail.com</td></tr>
+<tr><td align='right'><b>자격증</b></td><td align='left'>SQLD, 정보처리기사(필기), 컴퓨터활용능력 2급, GTQ 1급 등</td></tr>
+</tbody>
+</table>
+
+<!-- <a href="#tech-stack"><img src="https://img.shields.io/badge/Tech%20Stack-1D3557?style=for-the-badge" alt="Tech Stack" /></a>&nbsp;
+<a href="#projects"><img src="https://img.shields.io/badge/Projects-2B5FB8?style=for-the-badge" alt="Projects" /></a> -->
+
+</div>
 
 ## Tech Stack
 
-| 분야 | 기술 스택 |
-|---|---|
-| AI Agent / LLM | ![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?logo=langchain&logoColor=white) ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?logo=langchain&logoColor=white) ![RAG](https://img.shields.io/badge/RAG-4B5563) ![Ollama](https://img.shields.io/badge/Ollama-000000?logo=ollama&logoColor=white) ![Embedding](https://img.shields.io/badge/Embedding-4B5563) |
-| Data / ML | ![pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white) ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch%20%C2%B7%20Transformers%20(Fine--tuning)-EE4C2C?logo=pytorch&logoColor=white) ![PySpark](https://img.shields.io/badge/PySpark-E25A1C?logo=apachespark&logoColor=white) |
-| Backend | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=white) ![Kafka](https://img.shields.io/badge/Kafka-231F20?logo=apachekafka&logoColor=white) ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?logo=sqlalchemy&logoColor=white) |
-| Frontend | ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=white) ![Chart.js](https://img.shields.io/badge/Chart.js%20%C2%B7%20Recharts-FF6384?logo=chartdotjs&logoColor=white) |
-| Database | ![MariaDB](https://img.shields.io/badge/MariaDB-003545?logo=mariadb&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white) |
-| Infra / DevOps | ![AWS](https://img.shields.io/badge/AWS-232F3E?logo=amazonwebservices&logoColor=white) ![Docker](https://img.shields.io/badge/Docker%20%C2%B7%20Compose-2496ED?logo=docker&logoColor=white) ![nginx](https://img.shields.io/badge/nginx-009639?logo=nginx&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white) ![n8n](https://img.shields.io/badge/n8n-EA4B71?logo=n8n&logoColor=white) ![Airflow](https://img.shields.io/badge/Airflow-017CEE?logo=apacheairflow&logoColor=white) ![Cloudflare Tunnel](https://img.shields.io/badge/Cloudflare%20Tunnel-F38020?logo=cloudflare&logoColor=white) |
-| Design | ![Figma](https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white) ![Photoshop](https://img.shields.io/badge/Photoshop-31A8FF?logo=adobephotoshop&logoColor=white) ![Illustrator](https://img.shields.io/badge/Illustrator-FF9A00?logo=adobeillustrator&logoColor=white) |
+<table align="center">
+<thead><tr><th>분야</th><th>기술 스택</th></tr></thead>
+<tbody>
+<tr><td>AI Agent / LLM</td><td><img src="https://img.shields.io/badge/LangGraph-1C3C3C?logo=langchain&logoColor=white" alt="LangGraph" /> <img src="https://img.shields.io/badge/LangChain-1C3C3C?logo=langchain&logoColor=white" alt="LangChain" /> <img src="https://img.shields.io/badge/RAG-4B5563" alt="RAG" /> <img src="https://img.shields.io/badge/Embedding-4B5563" alt="Embedding" /> <img src="https://img.shields.io/badge/Ollama-000000?logo=ollama&logoColor=white" alt="Ollama" /></td></tr>
+<tr><td>Data / ML</td><td><img src="https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white" alt="PyTorch" /> <img src="https://img.shields.io/badge/Fine--tuning-4B5563" alt="Fine-tuning" /> <img src="https://img.shields.io/badge/PySpark-E25A1C?logo=apachespark&logoColor=white" alt="PySpark" /> <img src="https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white" alt="pandas" /></td></tr>
+<tr><td>Backend</td><td><img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python" /> <img src="https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white" alt="FastAPI" /> <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=white" alt="Spring Boot" /> <img src="https://img.shields.io/badge/Kafka-231F20?logo=apachekafka&logoColor=white" alt="Kafka" /></td></tr>
+<tr><td>Frontend</td><td><img src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB" alt="React" /> <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" alt="TypeScript" /></td></tr>
+<tr><td>Database</td><td><img src="https://img.shields.io/badge/MariaDB-003545?logo=mariadb&logoColor=white" alt="MariaDB" /> <img src="https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white" alt="PostgreSQL" /></td></tr>
+<tr><td>Infra / DevOps</td><td><img src="https://img.shields.io/badge/AWS-232F3E?logo=amazonwebservices&logoColor=white" alt="AWS" /> <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" alt="Docker" /> <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="GitHub Actions" /> <img src="https://img.shields.io/badge/Airflow-017CEE?logo=apacheairflow&logoColor=white" alt="Airflow" /></td></tr>
+<tr><td>Design</td><td><img src="https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white" alt="Figma" /> <img src="https://img.shields.io/badge/Photoshop-31A8FF?logo=adobephotoshop&logoColor=white" alt="Photoshop" /></td></tr>
+</tbody>
+</table>
 
 ## Projects
+
+<!-- <p align="center">
+<a href="#1-햇들농산---농산물-저장-유통을-위한-무인-일일-가격-예측-ml-파이프라인"><img src="https://img.shields.io/badge/01%20%20%ED%96%87%EB%93%A4%EB%86%8D%EC%82%B0-1D3557?style=flat-square" alt="01  햇들농산" /></a>
+<a href="#2-highgooh--esg-공급망-데이터-및-탄소-배출-모니터링-erp"><img src="https://img.shields.io/badge/02%20%20Highgooh-2B5FB8?style=flat-square" alt="02  Highgooh" /></a>
+<a href="#3-career-jikimi--사내-채팅-메시지-오발송-방지-ai-가드"><img src="https://img.shields.io/badge/03%20%20Career--Jikimi-1D3557?style=flat-square" alt="03  Career-Jikimi" /></a>
+<a href="#4-habhobby--셀프-호스팅-링크-라운처--공유-컬렉션"><img src="https://img.shields.io/badge/04%20%20HabHobby-2B5FB8?style=flat-square" alt="04  HabHobby" /></a>
+<a href="#5-apache-spark-기반-서울시-지하철-승하차-데이터-분석"><img src="https://img.shields.io/badge/05%20%20Apache%20Spark%20%EA%B8%B0%EB%B0%98%20%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%A7%80%ED%95%98%EC%B2%A0%20%EC%8A%B9%ED%95%98%EC%B0%A8%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B6%84%EC%84%9D-1D3557?style=flat-square" alt="05  Apache Spark 기반 서울시 지하철 승하차 데이터 분석" /></a>
+</p> -->
 
 1. [햇들농산 - 농산물 저장 유통을 위한 무인 일일 가격 예측 ML 파이프라인](#1-햇들농산---농산물-저장-유통을-위한-무인-일일-가격-예측-ml-파이프라인)
 2. [Highgooh — ESG 공급망 데이터 및 탄소 배출 모니터링 ERP](#2-highgooh--esg-공급망-데이터-및-탄소-배출-모니터링-erp)
@@ -27,16 +49,19 @@
 4. [HabHobby — 셀프 호스팅 링크 라운처 & 공유 컬렉션](#4-habhobby--셀프-호스팅-링크-라운처--공유-컬렉션)
 5. [Apache Spark 기반 서울시 지하철 승하차 데이터 분석](#5-apache-spark-기반-서울시-지하철-승하차-데이터-분석)
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1D3557,100:2B5FB8&height=3" width="100%" alt="" />
 
 ### 1. 햇들농산 - 농산물 저장 유통을 위한 무인 일일 가격 예측 ML 파이프라인
 
-| 항목 | 내용 |
-|---|---|
-| **기간** | 2026-08-18 → 2026-09-21 (배치 운영: 08-25 ~) |
-| **팀 구성** | 5인 다중 파트 프로젝트 (마스터 / 구매 / 재무 / 물류 / 영업 / ML) |
-| **역할** | ML 파트 단독 전담 (데이터, 모델, 배치, 에이전트, 콘솔), 프론트엔드 |
-| **리포지토리** | [https://github.com/nobadai/mainproject](https://github.com/nobadai/mainproject) |
+<table align="center">
+<thead><tr><th>항목</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td><b>기간</b></td><td>2026-08-18 → 2026-09-21 (배치 운영: 08-25 ~)</td></tr>
+<tr><td><b>팀 구성</b></td><td>5인 다중 파트 프로젝트 (마스터 / 구매 / 재무 / 물류 / 영업 / ML)</td></tr>
+<tr><td><b>역할</b></td><td>ML 파트 단독 전담 (데이터, 모델, 배치, 에이전트, 콘솔), 프론트엔드</td></tr>
+<tr><td><b>리포지토리</b></td><td><a href="https://github.com/nobadai/mainproject">https://github.com/nobadai/mainproject</a></td></tr>
+</tbody>
+</table>
 
 #### 주제 (Topic)
 
@@ -104,18 +129,21 @@ flowchart LR
 - **운영 환경에서 교차검증 결과가 반전된 문제**<br>
   교차검증은 4~6년 데이터를 사용하나 실제 운영은 7년 데이터를 학습에 사용하며, 양파는 앵커를 이기려면 5년 이상의 학습 데이터가 필요했음 (배추 실운영 −5.7%로 역전). 구조 변경 시 운영 조건과 동일한 환경에서 재구축하여 라이브 구간을 평가하도록 개선.
 
-[↑ 목차로](#projects)
+<p align="right"><a href="#projects"><img src="https://img.shields.io/badge/%E2%86%91%20%EB%AA%A9%EC%B0%A8%EB%A1%9C-555555?style=flat-square" alt="↑ 목차로" /></a></p>
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1D3557,100:2B5FB8&height=3" width="100%" alt="" />
 
 ### 2. Highgooh — ESG 공급망 데이터 및 탄소 배출 모니터링 ERP
 
-| 항목 | 내용 |
-|---|---|
-| **기간** | 2026-04 → 2026-06 (6월 집중 개발) |
-| **팀 구성** | 4명 (PM 1, 개발자 3) |
-| **역할** | 풀스택 (FE 리드 & BE) — Figma UI/UX, React 대시보드, Spring Boot API (주문·포장·송장·출고 이력), AI 리포트 UI, 실시간 알림 |
-| **리포지토리** | [https://github.com/agii990114-ctrl/dev_highgooh](https://github.com/agii990114-ctrl/dev_highgooh) |
+<table align="center">
+<thead><tr><th>항목</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td><b>기간</b></td><td>2026-04 → 2026-06 (6월 집중 개발)</td></tr>
+<tr><td><b>팀 구성</b></td><td>4명 (PM 1, 개발자 3)</td></tr>
+<tr><td><b>역할</b></td><td>풀스택 (FE 리드 & BE) — Figma UI/UX, React 대시보드, Spring Boot API (주문·포장·송장·출고 이력), AI 리포트 UI, 실시간 알림</td></tr>
+<tr><td><b>리포지토리</b></td><td><a href="https://github.com/agii990114-ctrl/dev_highgooh">https://github.com/agii990114-ctrl/dev_highgooh</a></td></tr>
+</tbody>
+</table>
 
 #### 주제 (Topic)
 
@@ -192,19 +220,22 @@ flowchart LR
 - **송장 번호 채번 및 경로 충돌**<br>
   포장 송장 번호가 `int` 타입이던 문제를 `INV-YYYYMMDD-{packingId}` 포맷의 `String`으로 변경하고, 경로 변수에 `[A-Za-z0-9-]+` 정규식을 적용하여 숫자형 경로와의 충돌을 방지함. 루프 내 DTO 재할당으로 인한 가변 상태 문제는 명시적 DAO 파라미터 전달 방식으로 변경하여 해결.
 
-[↑ 목차로](#projects)
+<p align="right"><a href="#projects"><img src="https://img.shields.io/badge/%E2%86%91%20%EB%AA%A9%EC%B0%A8%EB%A1%9C-555555?style=flat-square" alt="↑ 목차로" /></a></p>
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1D3557,100:2B5FB8&height=3" width="100%" alt="" />
 
 ### 3. Career-Jikimi — 사내 채팅 메시지 오발송 방지 AI 가드
 
-| 항목 | 내용 |
-|---|---|
-| **기간** | 2026-07-29 → 2026-08-04 (6일) |
-| **팀 구성** | 2명 (기존 6명에서 축소) |
-| **역할** | AI / 풀스택 — 데이터셋 설계, 미세조정, 평가, 판정 파이프라인, 데모 채팅 앱 개발 |
-| **리포지토리** | [github.com/Bomb-pod/career-jikimi](https://github.com/Bomb-pod/career-jikimi) |
-| **모델/데이터** | HF Hub `agii0114/career-jikimi-context-guard`, `agii0114/career-jikimi-context-dataset` |
+<table align="center">
+<thead><tr><th>항목</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td><b>기간</b></td><td>2026-07-29 → 2026-08-04 (6일)</td></tr>
+<tr><td><b>팀 구성</b></td><td>2명 (기존 6명에서 축소)</td></tr>
+<tr><td><b>역할</b></td><td>AI / 풀스택 — 데이터셋 설계, 미세조정, 평가, 판정 파이프라인, 데모 채팅 앱 개발</td></tr>
+<tr><td><b>리포지토리</b></td><td><a href="https://github.com/Bomb-pod/career-jikimi">github.com/Bomb-pod/career-jikimi</a></td></tr>
+<tr><td><b>모델/데이터</b></td><td>HF Hub <code>agii0114/career-jikimi-context-guard</code>, <code>agii0114/career-jikimi-context-dataset</code></td></tr>
+</tbody>
+</table>
 
 #### 주제 (Topic)
 
@@ -266,18 +297,21 @@ flowchart LR
 - **난이도 높은 평가 데이터셋에서 재현율(Recall) 0.020 기록**<br>
   오답 50건 분석 결과 92%가 지시 위반이나 단순 사실 관계 모순 때문임을 확인. 모델 한계를 문서화하고 2단계 개선 계획(규칙 기반 사전 검사 + 모순 유형 추가 데이터 학습) 수립.
 
-[↑ 목차로](#projects)
+<p align="right"><a href="#projects"><img src="https://img.shields.io/badge/%E2%86%91%20%EB%AA%A9%EC%B0%A8%EB%A1%9C-555555?style=flat-square" alt="↑ 목차로" /></a></p>
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1D3557,100:2B5FB8&height=3" width="100%" alt="" />
 
 ### 4. HabHobby — 셀프 호스팅 링크 라운처 & 공유 컬렉션
 
-| 항목 | 내용 |
-|---|---|
-| **기간** | 2026-09-01 → 2026-09-13 (101 커밋) |
-| **팀 구성** | 개인 프로젝트 |
-| **역할** | 디자인, 풀스택, Android 래퍼, DevOps, 문서화 |
-| **라이브 서비스** | kim5ing.cloud (Cloudflare Tunnel, 개인 서버) |
+<table align="center">
+<thead><tr><th>항목</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td><b>기간</b></td><td>2026-09-01 → 2026-09-13 (101 커밋)</td></tr>
+<tr><td><b>팀 구성</b></td><td>개인 프로젝트</td></tr>
+<tr><td><b>역할</b></td><td>디자인, 풀스택, Android 래퍼, DevOps, 문서화</td></tr>
+<tr><td><b>라이브 서비스</b></td><td>kim5ing.cloud (Cloudflare Tunnel, 개인 서버)</td></tr>
+</tbody>
+</table>
 
 #### 주제 (Topic)
 
@@ -351,18 +385,21 @@ flowchart LR
 - **배포 후 이전 UI가 캐싱되는 문제**<br>
   Cloudflare 무료 플랜 기본 설정이 `no-cache` 헤더를 무시하고 4시간 TTL을 적용하던 문제. 부팅 시 산출되는 해시 기반 자원 URL과 `ETag`/304 응답 구조로 전환하여 즉시 반영되도록 해결.
 
-[↑ 목차로](#projects)
+<p align="right"><a href="#projects"><img src="https://img.shields.io/badge/%E2%86%91%20%EB%AA%A9%EC%B0%A8%EB%A1%9C-555555?style=flat-square" alt="↑ 목차로" /></a></p>
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1D3557,100:2B5FB8&height=3" width="100%" alt="" />
 
 ### 5. Apache Spark 기반 서울시 지하철 승하차 데이터 분석
 
-| 항목 | 내용 |
-|---|---|
-| **기간** | 2026-03-18 → 2026-03-27 (8영업일) |
-| **팀 구성** | 개발자 3명 |
-| **역할** | 개발자 & 리포지토리 통합 담당 — 주말/야간 핫스팟 분석 + AI 추천 트랙, Spark/Docker 네트워크 구축, 포트폴리오 메인 허브 구축 (60개 PR 중 33개 병합) |
-| **리포지토리** | [GitHub `HighGooh`](https://github.com/agii990114-ctrl/subway_spark_project) |
+<table align="center">
+<thead><tr><th>항목</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td><b>기간</b></td><td>2026-03-18 → 2026-03-27 (8영업일)</td></tr>
+<tr><td><b>팀 구성</b></td><td>개발자 3명</td></tr>
+<tr><td><b>역할</b></td><td>개발자 & 리포지토리 통합 담당 — 주말/야간 핫스팟 분석 + AI 추천 트랙, Spark/Docker 네트워크 구축, 포트폴리오 메인 허브 구축 (60개 PR 중 33개 병합)</td></tr>
+<tr><td><b>리포지토리</b></td><td><a href="https://github.com/agii990114-ctrl/subway_spark_project">GitHub <code>HighGooh</code></a></td></tr>
+</tbody>
+</table>
 
 #### 주제 (Topic)
 
@@ -426,4 +463,4 @@ flowchart LR
 - **느린 쿼리 실행 중 반복 클릭으로 인한 레이스 조건**<br>
   사용자 중복 제출 문제. 조회 중인 상태(`isLoading`)에 따라 버튼을 비활성화(`disabled`)하고, `ResponsiveContainer` 키를 재설정하여 차트가 깨끗하게 리렌더링되도록 수정함. 동적 SQL 파싱 전 연도 화이트리스트 검증 로직 추가.
 
-[↑ 목차로](#projects)
+<p align="right"><a href="#projects"><img src="https://img.shields.io/badge/%E2%86%91%20%EB%AA%A9%EC%B0%A8%EB%A1%9C-555555?style=flat-square" alt="↑ 목차로" /></a></p>
