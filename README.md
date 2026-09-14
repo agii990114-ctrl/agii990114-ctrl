@@ -34,14 +34,14 @@ UI/UX설계부터 프론트엔드와 백엔드 그리고 AX까지, 전 과정을
 
 ---
 
-### 1. Haetdeul-ML — 농산물 저장 유통을 위한 무인 일일 가격 예측 ML 파이프라인
+### 1. 햇들농산 - 농산물 저장 유통을 위한 무인 일일 가격 예측 ML 파이프라인
 
 | 항목 | 내용 |
 |---|---|
 | **기간** | 2026-08-18 → 2026-09-21 (배치 운영: 08-25 ~) |
 | **팀 구성** | 5인 다중 파트 프로젝트 (마스터 / 구매 / 재무 / 물류 / 영업 / ML) |
 | **역할** | ML 파트 단독 전담 (데이터, 모델, 배치, 에이전트, 콘솔) |
-| **리포지토리** | `haetdeul-ml` (89 커밋) + 공용 `mainproject` 공급 PR |
+| **리포지토리** | [https://github.com/nobadai/mainproject](https://github.com/nobadai/mainproject) |
 
 #### 주제 (Topic)
 
@@ -116,7 +116,7 @@ ML 콘솔: FastAPI :8102 (28개 엔드포인트, psycopg3) ◀── Next.js :31
 | **기간** | 2026-04 → 2026-06 (6월 집중 개발) |
 | **팀 구성** | 4명 (PM 1, 개발자 3) |
 | **역할** | 풀스택 (FE 리드 & BE) — Figma UI/UX, React 대시보드, Spring Boot API (주문·포장·송장·출고 이력), AI 리포트 UI, 실시간 알림 |
-| **리포지토리** | GitHub org `shell-files` (244 커밋, 약 116개 PR) |
+| **리포지토리** | [https://github.com/agii990114-ctrl/dev_highgooh](https://github.com/agii990114-ctrl/dev_highgooh) |
 
 #### 주제 (Topic)
 
@@ -280,6 +280,7 @@ Airflow 3.2 (CeleryExecutor · Redis · Postgres)                               
 | **역할** | 디자인, 풀스택, Android 래퍼, DevOps, 문서화 |
 | **라이브 서비스** | kim5ing.cloud (Cloudflare Tunnel, 개인 서버) |
 
+
 #### 주제 (Topic)
 
 * 모바일이나 브라우저에서 공유된 URL을 사이트·폴더·연재 일정별 정보 카드로 만들어 주고 한 번의 터치로 원본 링크로 연결해 주는 "링크 전용 라운처"입니다. 11개 연재형 콘텐츠 플랫폼(웹툰, 드라마, 애니메이션)은 *작품(시리즈)* 단위로 정규화하여 수집하며, 기타 일반 도메인은 자동 그룹화됩니다.
@@ -355,7 +356,7 @@ iOS 단축어 ───────┘                                     │ h
 | **기간** | 2026-03-18 → 2026-03-27 (8영업일) |
 | **팀 구성** | 개발자 3명 |
 | **역할** | 개발자 & 리포지토리 통합 담당 — 주말/야간 핫스팟 분석 + AI 추천 트랙, Spark/Docker 네트워크 구축, 포트폴리오 메인 허브 구축 (60개 PR 중 33개 병합) |
-| **리포지토리** | GitHub `HighGooh` (123 커밋, 60 PR) |
+| **리포지토리** | [GitHub `HighGooh`](https://github.com/agii990114-ctrl/subway_spark_project) |
 
 #### 주제 (Topic)
 
