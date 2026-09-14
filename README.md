@@ -1,6 +1,5 @@
 # 안녕하세요, 김지환입니다.
 
-
 UI/UX설계부터 프론트엔드와 백엔드 그리고 AI까지, 전 과정을 기초부터 다진 **AI 에이전트 엔지니어 (AI Agent Engineer)** 지망 개발자입니다.
 
 | 구분 | 내용 |
@@ -8,8 +7,6 @@ UI/UX설계부터 프론트엔드와 백엔드 그리고 AI까지, 전 과정을
 | 거주지 | 경기도 성남시 |
 | 이메일 | agii990114@gmail.com |
 | 자격증 | SQLD, 정보처리기사(필기), 컴퓨터활용능력 2급, GTQ 1급 등 |
-
-
 
 ## Tech Stack
 
@@ -25,12 +22,11 @@ UI/UX설계부터 프론트엔드와 백엔드 그리고 AI까지, 전 과정을
 
 ## Projects
 
-
-1. [Haetdeul-ML — 농산물 저장 유통을 위한 무인 일일 가격 예측 ML 파이프라인](#1-haetdeul-ml--농산물-저장-유통을-위한-무인-일일-가격-예측-ml-파이프라인)
+1. [햇들농산 - 농산물 저장 유통을 위한 무인 일일 가격 예측 ML 파이프라인](#1-햇들농산---농산물-저장-유통을-위한-무인-일일-가격-예측-ml-파이프라인)
 2. [Highgooh — ESG 공급망 데이터 및 탄소 배출 모니터링 ERP](#2-highgooh--esg-공급망-데이터-및-탄소-배출-모니터링-erp)
 3. [Career-Jikimi — 사내 채팅 메시지 오발송 방지 AI 가드](#3-career-jikimi--사내-채팅-메시지-오발송-방지-ai-가드)
 4. [HabHobby — 셀프 호스팅 링크 라운처 & 공유 컬렉션](#4-habhobby--셀프-호스팅-링크-라운처--공유-컬렉션)
-5. [High Go! — Apache Spark 기반 서울시 지하철 승하차 데이터 분석](#5-high-go--apache-spark-기반-서울시-지하철-승하차-데이터-분석)
+5. [Apache Spark 기반 서울시 지하철 승하차 데이터 분석](#5-apache-spark-기반-서울시-지하철-승하차-데이터-분석)
 
 ---
 
@@ -54,29 +50,33 @@ UI/UX설계부터 프론트엔드와 백엔드 그리고 AI까지, 전 과정을
 * 따라서 사람이 개입하지 않고도 정직한 불확실성을 담은 일일 예측 곡선을 제공하는 것을 목표로 삼았습니다 (매수/매도 신호 제안은 비즈니스 룰 영역으로 분리). 기획 단계부터 데이터 기반으로 스코프를 설정하여, 가격 변화가 거의 없는 마늘은 제외하고, 소비자가는 서울 지역으로 한정하며, 경매가는 가락시장 특 등급 및 품목별 정규 규격으로 고정했습니다.
 
 #### 아키텍처 (Architecture)
-```
-09:00 작업 스케줄러 ─▶ run_batch.py (단계별 실행, 일시적 오류만 재시도, 데이터 신선도 검증)
-  수집기 ×5 (경매 · KAMIS · ASOS 기상 · 농넷 반입량 · ECOS) ─▶ PostgreSQL 원천 테이블 (UPSERT)
-  ─▶ ingest_agent 사전 점검 ─▶ 재구축 SQL 실행 (1,801줄 → crop_price_train 60개 컬럼, predict_input)
-  ─▶ verify_after_rebuild (BAD 상태 시 중단) ─▶ 예측: LightGBM 앙상블 3종 (경매/도매/소비자, 5개 시드, 분위수 구간)
-  ─▶ 그림자(Shadow) 모델 (CSV 저장 전용) ─▶ prediction_log ─▶ 과거 타겟 검증/점수 산출 ─▶ ml_price_forecasts 전송 (구매팀 DB)
-  ─▶ 사후 작업: retrain_agent · drift_agent · news_agent          09:23 Claude Code 초안 생성 ─▶ Gemini 한글 번역
-ML 콘솔: FastAPI :8102 (28개 엔드포인트, psycopg3) ◀── Next.js :3100  │  LangGraph 재학습 그래프 (판단 → 학습 → 검증 → 승인)
+
+```mermaid
+flowchart LR
+    subgraph BATCH["09:00 무인 배치 · run_batch.py (단계별 실행 · 일시 오류만 재시도 · 신선도 검증)"]
+        direction LR
+        C["수집기 ×5<br/>경매 · KAMIS · ASOS 기상<br/>농넷 반입량 · ECOS"] --> PG[("PostgreSQL<br/>원천 테이블 UPSERT")]
+        PG --> IA["ingest_agent<br/>사전 점검"] --> RB["재구축 SQL 1,801줄<br/>crop_price_train 60컬럼<br/>predict_input"] --> V{"verify_after_rebuild<br/>BAD 시 중단"}
+        V --> M["LightGBM 앙상블 ×3<br/>경매 / 도매 / 소비자<br/>5 시드 · 분위수 구간"]
+        M --> SH["Shadow 모델<br/>CSV 전용"]
+        M --> PL[("prediction_log")] --> SC["과거 타겟 채점"] --> OUT[("ml_price_forecasts<br/>구매팀 DB")]
+    end
+    PL --> AG["사후 에이전트<br/>retrain · drift · news"]
+    AG --> AU["09:23 Claude Code 감사 초안<br/>→ Gemini 한글 번역"]
+    PL --> CON["ML 콘솔<br/>FastAPI :8102 ◀ Next.js :3100"]
+    CON --> LG["LangGraph 재학습<br/>판단 → 학습 → 검증 → 승인"]
 ```
 
 #### 주요 작업 및 성과 (Key Work & Outcomes)
 
-* **데이터 파이프라인**: 5개 UPSERT 수집기(32개 시장 156만 건 경매, KAMIS 도매/소비자 105만 건, 95개 관측소 ASOS 기상, 농넷 반입량, ECOS/KDI 지표)와 공휴일·학사일정·뉴스 피드 연동. 60개 컬럼의 학습 테이블(21만 2천 행, 2,862개 기준일)과 2축 유통/조사 달력을 생성하는 1,801줄의 재구축 SQL 개발.
-
-* **모델링**: LightGBM L1, 5개 시드 앙상블, 76개 트리 구조. 예측 타겟을 앵커 스케일 기반 `log(타겟 / 앵커)`로 변환하여 리드 타임 미반영 문제(원천 가격 사용 시 중요도 1.5%에 불과)를 해결. 경매가/도매가에 대해 분위수 회귀(Quantile Regression) 기반 예측 구간 산출.
-
-* **엄격한 검증 체계**: 3개 폴드 교차 검증 적용 (폴드 B는 유일한 수급 충격 연도). **2024~2025년 미공개 홀드아웃(Holdout) 데이터셋 단 1회 평가 원칙** 준수, 9개 베이스라인 중 가장 강력한 것과 비교, 품목별 분리 평가, 2× 시드-σ 규칙 적용. 총 42회 실험 수행 (9개 적용, 20개 기각).
-
-* **평가 결과 (밀봉 홀드아웃 vs 강력한 베이스라인)**: 소비자가 오차 **+9.0 / +12.9 / +11.8%** 개선 (무 / 배추 / 양파), 배추 경매가 오차 양쪽 구간 모두 **+13.1%** 개선되며 변동성이 큰 시기일수록 우수한 성과를 보임. 실운영 기준: 76,614건 평가 완료, 배추 경매가 오차 21.1% 기록 (단순 예측 30.9% 대비 우수). XGBoost, CatBoost, TFT, LSTM, GRU 등 타 모델 대비 LightGBM이 압도적 성과 기록 (23/24개 셀에서 2σ 이상 격차로 우수).
-
-* **운영 자동화**: 09:00 배치 실행 (~13분 소요), 일시적 오류 전용 재시도 로직, 사전 트렁케이트 검증, BAD 판정 시 즉시 중단되는 사후 검증, 누락 알림, 그림자 모델 실행 체계 적용. 구매팀 테이블로 27,864건 데이터 정상 전달.
-
-* **에이전트**: 데이터 수집 / 품질 / 배치 실패 / 데이터 표류 / 예측 설명 / 뉴스 에이전트 구축 (**룰이 판단하고 LLM은 요약만 담당**). 2단계 human-in-the-loop 검증을 거치는 LangGraph 재학습 흐름 구축. Gemini로 번역되는 일일 Claude Code 감사 리포트 자동화 (216개 수치 100% 일치). 28개 엔드포인트의 FastAPI 콘솔 및 Next.js UI 개발.
+| 항목 | 내용 |
+|---|---|
+| **데이터 파이프라인** | 5개 UPSERT 수집기(32개 시장 156만 건 경매, KAMIS 도매/소비자 105만 건, 95개 관측소 ASOS 기상, 농넷 반입량, ECOS/KDI 지표)와 공휴일·학사일정·뉴스 피드 연동. 60개 컬럼의 학습 테이블(21만 2천 행, 2,862개 기준일)과 2축 유통/조사 달력을 생성하는 1,801줄의 재구축 SQL 개발. |
+| **모델링** | LightGBM L1, 5개 시드 앙상블, 76개 트리 구조. 예측 타겟을 앵커 스케일 기반 `log(타겟 / 앵커)`로 변환하여 리드 타임 미반영 문제(원천 가격 사용 시 중요도 1.5%에 불과)를 해결. 경매가/도매가에 대해 분위수 회귀(Quantile Regression) 기반 예측 구간 산출. |
+| **엄격한 검증 체계** | 3개 폴드 교차 검증 적용 (폴드 B는 유일한 수급 충격 연도). **2024~2025년 미공개 홀드아웃(Holdout) 데이터셋 단 1회 평가 원칙** 준수, 9개 베이스라인 중 가장 강력한 것과 비교, 품목별 분리 평가, 2× 시드-σ 규칙 적용. 총 42회 실험 수행 (9개 적용, 20개 기각). |
+| **평가 결과 (밀봉 홀드아웃 vs 강력한 베이스라인)** | 소비자가 오차 **+9.0 / +12.9 / +11.8%** 개선 (무 / 배추 / 양파), 배추 경매가 오차 양쪽 구간 모두 **+13.1%** 개선되며 변동성이 큰 시기일수록 우수한 성과를 보임. 실운영 기준: 76,614건 평가 완료, 배추 경매가 오차 21.1% 기록 (단순 예측 30.9% 대비 우수). XGBoost, CatBoost, TFT, LSTM, GRU 등 타 모델 대비 LightGBM이 압도적 성과 기록 (23/24개 셀에서 2σ 이상 격차로 우수). |
+| **운영 자동화** | 09:00 배치 실행 (~13분 소요), 일시적 오류 전용 재시도 로직, 사전 트렁케이트 검증, BAD 판정 시 즉시 중단되는 사후 검증, 누락 알림, 그림자 모델 실행 체계 적용. 구매팀 테이블로 27,864건 데이터 정상 전달. |
+| **에이전트** | 데이터 수집 / 품질 / 배치 실패 / 데이터 표류 / 예측 설명 / 뉴스 에이전트 구축 (**룰이 판단하고 LLM은 요약만 담당**). 2단계 human-in-the-loop 검증을 거치는 LangGraph 재학습 흐름 구축. Gemini로 번역되는 일일 Claude Code 감사 리포트 자동화 (216개 수치 100% 일치). 28개 엔드포인트의 FastAPI 콘솔 및 Next.js UI 개발. |
 
 #### 기술 스택 (Tech Stack)
 
@@ -122,7 +122,6 @@ ML 콘솔: FastAPI :8102 (28개 엔드포인트, psycopg3) ◀── Next.js :31
 
 * 알루미늄 가공 공장을 위한 ERP 스타일 운영 플랫폼입니다. **물류 프로세스**(ASN → 입고 → 주문 → 포장 → 출고 → 송장/운송장 → 출고 이력)와 **공정별 탄소 배출 모니터링**(Scope 1/2 대시보드, 기준 배출 계수 대비 이상 감지, Apache Airflow + 로컬 LLM(Ollama/Qwen) 기반 일일 한국어 "탄소 이상 개선 권고 리포트" 생성 및 관리자 대상 실시간 WebSocket 알림)을 결합했습니다.
 
-
 #### 기획 의도 (Planning Intent)
 
 * ESG 공시 의무가 확대되고 있음에도 현장의 탄소 배출 데이터는 파편화되어 엑셀로 수작업 관리되며 수식 오류에 취약했습니다. 당초 목적은 탄소 배출량을 자동 집계·시각화하는 ESG 플랫폼이었으나, **개발 중간에 탄소 모니터링이 결합된 물류 ERP로 핵심 범위를 피벗**했습니다.
@@ -130,42 +129,43 @@ ML 콘솔: FastAPI :8102 (28개 엔드포인트, psycopg3) ◀── Next.js :31
 * ERP 레퍼런스를 분석하고 Figma 화면 흐름을 공유함과 동시에 API 명세를 선제 정의하여 팀원들이 병렬로 개발을 진행했고, 피벗 후 4주 만에 핵심 기능을 완성했습니다. 8개의 이슈 템플릿, PR 기반 기능 브랜치, GitHub Discussions 의사결정 기록 등 스프린트 기반 프로젝트 관리를 수행했습니다.
 
 #### 아키텍처 (Architecture)
-```
-nginx :80 (React SPA) ──REST /auth /asn /order /packing /outbound /carbon /anomaly /airflow──▶ Spring Boot :8080 ──MyBatis──▶ MariaDB (schema highgooh)
-      ▲                                                                                        │ JWE 쿠키 인증 (RSA-OAEP-256 + A256GCM)
-      └──────── STOMP /ws/hg-websocket  ◀── /topic/role-ADMIN | role-MANAGER | /queue/notifications ◀─┘
-                                                                                                ▲
-Airflow 3.2 (CeleryExecutor · Redis · Postgres)                                                  │ 프레임 직접 구현 (?client=airflow)
-  DAG app01: INIT(AIRFLOW_JOB 큐) → SELECT(v_llm 뷰) → OLLAMA(Qwen, format=json, T=0) → INSERT(AIRFLOW_LOG) → WS ─┘
+
+```mermaid
+flowchart LR
+    subgraph APP["애플리케이션 스택 (Docker Compose)"]
+        UI["React SPA<br/>nginx :80"] -- "REST /auth /asn /order /packing<br/>/outbound /carbon /anomaly /airflow" --> API["Spring Boot :8080<br/>JWE 쿠키 인증 (RSA-OAEP-256 + A256GCM)"]
+        API -- "MyBatis" --> DB[("MariaDB<br/>schema highgooh")]
+        API -. "STOMP /ws/hg-websocket<br/>/topic/role-ADMIN · role-MANAGER · /queue/notifications" .-> UI
+    end
+    subgraph AF["Airflow 3.2 (CeleryExecutor · Redis · Postgres) — DAG app01"]
+        direction LR
+        D1["INIT<br/>AIRFLOW_JOB 큐"] --> D2["SELECT<br/>v_llm 뷰"] --> D3["OLLAMA<br/>Qwen · format=json · T=0"] --> D4["INSERT<br/>AIRFLOW_LOG"] --> D5["WS<br/>STOMP 프레임 직접 구현"]
+    end
+    D5 -- "?client=airflow" --> API
 ```
 
 #### 주요 작업 및 성과 (Key Work & Outcomes)
 
-**본인 담당 업무:**
+**본인 담당 업무**
 
-* **화면 흐름 기획 및 Figma UI/UX 디자인**: 물류 및 탄소 모니터링 모듈의 화면 흐름, React 컴포넌트 아키텍처, Redux Toolkit 슬라이스 및 대시보드 인터페이스 설계.
-
-* **Spring Boot + MyBatis API 구현**: MariaDB 기반 주문, 포장, 출고/송장, 출고 이력 API 구현 — 송장 번호 자동 채번(`INV-YYYYMMDD-{id}`), 상태 코드 기반 출고 제어, 박스별 포장 완료 시 상위 주문 상태를 자동 승격하는 트랜잭션 처리.
-
-* **출고 이력 KPI**: 전체 / 정시 / 지연 출고 건수를 집계하는 CTE 쿼리 작성 ("정시 출고" = 예정시간 전 모든 박스 출고 완료).
-
-* **포장 QR 스캔 루프**: 박스별 QR 코드 생성(오류 정정 레벨 H), 스캔 즉시 포장 상태를 완료로 전환하는 전용 화면 연동.
-
-* **문서 내보내기**: 5개 주요 화면 엑셀(`.xlsx`) 내보내기 및 AI 리포트 워드(`.docx`) 내보내기 구현.
-
-* **AI 리포트 화면 및 API**: `AirflowLogMapper` 쿼리 작성, STOMP 역할별 주제 구독 기반의 실시간 알림 종 기능 구현.
+| 항목 | 내용 |
+|---|---|
+| **화면 흐름 기획 및 Figma UI/UX 디자인** | 물류 및 탄소 모니터링 모듈의 화면 흐름, React 컴포넌트 아키텍처, Redux Toolkit 슬라이스 및 대시보드 인터페이스 설계. |
+| **Spring Boot + MyBatis API 구현** | MariaDB 기반 주문, 포장, 출고/송장, 출고 이력 API 구현 — 송장 번호 자동 채번(`INV-YYYYMMDD-{id}`), 상태 코드 기반 출고 제어, 박스별 포장 완료 시 상위 주문 상태를 자동 승격하는 트랜잭션 처리. |
+| **출고 이력 KPI** | 전체 / 정시 / 지연 출고 건수를 집계하는 CTE 쿼리 작성 ("정시 출고" = 예정시간 전 모든 박스 출고 완료). |
+| **포장 QR 스캔 루프** | 박스별 QR 코드 생성(오류 정정 레벨 H), 스캔 즉시 포장 상태를 완료로 전환하는 전용 화면 연동. |
+| **문서 내보내기** | 5개 주요 화면 엑셀(`.xlsx`) 내보내기 및 AI 리포트 워드(`.docx`) 내보내기 구현. |
+| **AI 리포트 화면 및 API** | `AirflowLogMapper` 쿼리 작성, STOMP 역할별 주제 구독 기반의 실시간 알림 종 기능 구현. |
 
 **시스템 성과 (팀 전체)**
 
-- Swagger로 문서화된 9개 도메인, 약 40개 REST 엔드포인트 구축 (150개 Java 파일, 약 8,000 LOC).
-
-- JWE 토큰(RSA-OAEP-256 + A256GCM) 쿠키 인증 및 BCrypt 암호화.
-
-- STOMP/WebSocket 기반 1:1 및 역할별 브로드캐스트 시스템.
-
-- 7단계 Airflow DAG를 통한 작업 큐 소진, LLM 리포트 생성, DB 트랜잭션 저장, 백엔드 알림 자동화.
-
-- 월/분기/연간 탄소 집계 대시보드 및 이상 조치 워크플로우 구축.
+| # | 내용 |
+|---|---|
+| 1 | Swagger로 문서화된 9개 도메인, 약 40개 REST 엔드포인트 구축 (150개 Java 파일, 약 8,000 LOC). |
+| 2 | JWE 토큰(RSA-OAEP-256 + A256GCM) 쿠키 인증 및 BCrypt 암호화. |
+| 3 | STOMP/WebSocket 기반 1:1 및 역할별 브로드캐스트 시스템. |
+| 4 | 7단계 Airflow DAG를 통한 작업 큐 소진, LLM 리포트 생성, DB 트랜잭션 저장, 백엔드 알림 자동화. |
+| 5 | 월/분기/연간 탄소 집계 대시보드 및 이상 조치 워크플로우 구축. |
 
 #### 기술 스택 (Tech Stack)
 
@@ -220,26 +220,26 @@ Airflow 3.2 (CeleryExecutor · Redis · Postgres)                               
 * 실제 운영 중에는 차단된 메시지만 피드백이 들어오므로 재현율(Recall)은 측정이 불가능한 것으로 명시하고 오발송 신고 버튼을 별도 제공했습니다. 욕설/개인정보 필터링은 범위에서 제외하여 오직 오발송 감지 성능만 정밀 측정하도록 유지했습니다.
 
 #### 아키텍처 (Architecture)
-```
-브라우저 (React + Zustand)                     FastAPI (단일 프로세스)                 MariaDB 11
- ├─ 낙관적 렌더링 (임시 ID) ──POST /rooms/{id}/messages──▶ judge() 판정             (Alembic, 6개 테이블)
- │                                            │  ModelCall ── encoder | openai | ollama
- │                                            │  판정 결과 ≥ 임계치 ──▶ 409 응답 + judgment_logs ──▶ 확인 팝업
- │                                            └─ 정상 ──▶ seq = rooms.last_seq FOR UPDATE + 1 ──▶ 메시지 INSERT
- └─ WS /ws (사용자당 1개 연결, room_id 멀티플렉싱) ◀── 프로세스 내 레지스트리가 방 멤버들에게 브로드캐스트
+
+```mermaid
+flowchart LR
+    B["브라우저<br/>React + Zustand<br/>낙관적 렌더링 (임시 ID)"] -- "POST /rooms/{id}/messages" --> J["judge()<br/>FastAPI 단일 프로세스"]
+    J --> MC{"ModelCall<br/>encoder / openai / ollama"}
+    MC -- "판정 ≥ 임계치" --> R["409 응답 + judgment_logs"] --> POP["확인 팝업"]
+    MC -- "정상" --> SEQ["seq = rooms.last_seq<br/>FOR UPDATE + 1"] --> INS[("MariaDB 11<br/>messages INSERT<br/>Alembic · 6개 테이블")]
+    INS --> REG["프로세스 내 WS 레지스트리"]
+    REG -- "WS /ws · 사용자당 1연결<br/>room_id 멀티플렉싱 브로드캐스트" --> B
 ```
 
 #### 주요 작업 및 성과 (Key Work & Outcomes)
 
-* **데이터셋 엔지니어링 (6일 중 3일 소요)**: TF-IDF 검증 시 대화 맥락 없이 답변만 보고도 99.2% 정확도가 나오는 현상을 확인하고 v1 데이터셋을 폐기(말투 분류기가 되는 문제). 동일 답변이 적절/부적절 맥락에 각각 1회씩 교차 등장하는 **1,000건의 반실제적 쌍(Counterfactual-pair) 데이터셋**으로 재구축(답변만 보고 맞추는 수치 0.40으로 정상화). 16개 가상 대화방 및 200건의 테스트 세트 작성.
-
-* **화자 익명화**: 학습 데이터의 화자 표기를 서빙 형식과 동일하게 가공(`팀장:` → `A:`)하여 모델의 일반화 성능 향상 (검증 정확도 0.855 → 0.890).
-
-* **모델 미세조정**: `skt/A.X-Encoder-base` (ModernBERT, 149M) 모델을 이진 Cross-Encoder로 미세조정. 쌍(Pair) 단위 StratifiedGroupKFold 5-fold 교차 검증 적용 및 4 에포크(Epoch) 학습 고정.
-
-* **평가 결과**: 평가 데이터셋 기준 **AUC 1.000, Precision 1.000, 오탐(False Positive) 0건** 달성, CPU 환경 평균 응답 속도(p50) 512ms 기록. 대화 내역을 타 대화방 내용으로 교체하는 절제 연구(Ablation) 시 AUC가 0.638로 하락하여 맥락 의존성 입증. OOF 정확도 0.854로 규칙 기반 Baseline(0.725) 대비 우수.
-
-* **판정 백엔드 & 데모 앱**: 3가지 판정 백엔드 연동, CLI 기반 오프라인 평가 도구 제공, FastAPI + MariaDB + React 데모 앱 구축, 8개 ADR 작성, pytest 355개 / Vitest 147개 테스트 통과, CPU 전용 PyTorch 활용 3단계 Docker 빌드 적용.
+| 항목 | 내용 |
+|---|---|
+| **데이터셋 엔지니어링 (6일 중 3일 소요)** | TF-IDF 검증 시 대화 맥락 없이 답변만 보고도 99.2% 정확도가 나오는 현상을 확인하고 v1 데이터셋을 폐기(말투 분류기가 되는 문제). 동일 답변이 적절/부적절 맥락에 각각 1회씩 교차 등장하는 **1,000건의 반실제적 쌍(Counterfactual-pair) 데이터셋**으로 재구축(답변만 보고 맞추는 수치 0.40으로 정상화). 16개 가상 대화방 및 200건의 테스트 세트 작성. |
+| **화자 익명화** | 학습 데이터의 화자 표기를 서빙 형식과 동일하게 가공(`팀장:` → `A:`)하여 모델의 일반화 성능 향상 (검증 정확도 0.855 → 0.890). |
+| **모델 미세조정** | `skt/A.X-Encoder-base` (ModernBERT, 149M) 모델을 이진 Cross-Encoder로 미세조정. 쌍(Pair) 단위 StratifiedGroupKFold 5-fold 교차 검증 적용 및 4 에포크(Epoch) 학습 고정. |
+| **평가 결과** | 평가 데이터셋 기준 **AUC 1.000, Precision 1.000, 오탐(False Positive) 0건** 달성, CPU 환경 평균 응답 속도(p50) 512ms 기록. 대화 내역을 타 대화방 내용으로 교체하는 절제 연구(Ablation) 시 AUC가 0.638로 하락하여 맥락 의존성 입증. OOF 정확도 0.854로 규칙 기반 Baseline(0.725) 대비 우수. |
+| **판정 백엔드 & 데모 앱** | 3가지 판정 백엔드 연동, CLI 기반 오프라인 평가 도구 제공, FastAPI + MariaDB + React 데모 앱 구축, 8개 ADR 작성, pytest 355개 / Vitest 147개 테스트 통과, CPU 전용 PyTorch 활용 3단계 Docker 빌드 적용. |
 
 #### 기술 스택 (Tech Stack)
 
@@ -280,7 +280,6 @@ Airflow 3.2 (CeleryExecutor · Redis · Postgres)                               
 | **역할** | 디자인, 풀스택, Android 래퍼, DevOps, 문서화 |
 | **라이브 서비스** | kim5ing.cloud (Cloudflare Tunnel, 개인 서버) |
 
-
 #### 주제 (Topic)
 
 * 모바일이나 브라우저에서 공유된 URL을 사이트·폴더·연재 일정별 정보 카드로 만들어 주고 한 번의 터치로 원본 링크로 연결해 주는 "링크 전용 라운처"입니다. 11개 연재형 콘텐츠 플랫폼(웹툰, 드라마, 애니메이션)은 *작품(시리즈)* 단위로 정규화하여 수집하며, 기타 일반 도메인은 자동 그룹화됩니다.
@@ -292,32 +291,40 @@ Airflow 3.2 (CeleryExecutor · Redis · Postgres)                               
 * 브라우저 북마크는 기기/계정에 귀속되고, 메신저로 공유된 링크는 대화 속에 묻히는 문제를 해결하고자 했습니다. "공유 버튼 = 등록 완료" (계정 연동 없이 오픈 그래프 데이터만 활용), 안정적인 작품 전용 URL 생성을 통한 작품 단위 연동, 진척도 관리는 원본 플랫폼에 위임, 불완전한 메타데이터에 대한 "정보 없음" 대응 화면 구현이라는 4가지 원칙을 세웠습니다.
 
 #### 아키텍처 (Architecture)
-```
-PWA share_target ─┐                                     Docker Compose (홈 PC 서버)
-Android TWA share ─┼─▶ POST /share (Bearer hhk_… 키) ─▶ ┌─────────────────────────────────────────────┐
-iOS 단축어 ───────┘                                     │ habhobby  Node 24 · node:http · TypeScript    │
-                                                        │   intakeShared() → 끊어진 링크 검사 → OG 수집      │
-브라우저 (바닐라 JS SPA + SW 셸 캐시) ──────/api/*──▶   │   node:sqlite (WAL) url ⇄ work ⇄ folder …     │
-        ▲                                               │   6시간 주기 커버 이미지 자동 갱신 배치         │
-        └── Cloudflare edge (TLS, 캐시, 압축) ─────────┤ cloudflared  아웃바운드 터널, 127.0.0.1:8080 │
-                                                        └─────────────────────────────────────────────┘
+
+```mermaid
+flowchart LR
+    subgraph SRC["공유 창구 ×3"]
+        direction TB
+        P1["PWA share_target"]
+        P2["Android TWA share"]
+        P3["iOS 단축어"]
+    end
+    P1 --> IN
+    P2 --> IN
+    P3 --> IN
+    subgraph DC["Docker Compose · 홈 PC 서버"]
+        IN["POST /share (Bearer hhk_… 키)<br/>intakeShared() → 끊어진 링크 검사 → OG 수집"] --> DB[("node:sqlite (WAL)<br/>url ⇄ work ⇄ folder …")]
+        APP["habhobby<br/>Node 24 · node:http · TypeScript"] --- IN
+        JOB["6시간 주기<br/>커버 이미지 자동 갱신"] --> DB
+        CF["cloudflared<br/>아웃바운드 터널 · 127.0.0.1:8080"] --- APP
+    end
+    BR["브라우저<br/>바닐라 JS SPA + SW 셸 캐시"] -- "/api/*" --> APP
+    EDGE["Cloudflare edge<br/>TLS · 캐시 · 압축"] --- CF
+    BR --- EDGE
 ```
 
 #### 주요 작업 및 성과 (Key Work & Outcomes)
 
-* **외부 의존성 제로 (Zero-dependency)**: Node.js 24 타입 스트리핑을 활용하여 빌더/트랜스파일러/npm 패키지 없이 순수 내장 모듈(`node:http`, `node:sqlite` WAL, `node:crypto`)과 TypeScript만으로 구축. 서버 약 5,000 LOC, 바닐라 JS 클라이언트 7,100줄, 12개 스키마 마이그레이션 적용.
-
-* **중복 제거 수집 파이프라인**: `intakeShared()` 함수가 깨진 링크(`ENOTFOUND`, 404, 410)를 차단하고 메타데이터를 수집함. 5명의 사용자가 동일한 작품을 저장해도 메타데이터 수집은 1회만 수행되어, 기존 URL 저장 속도가 64ms에서 5ms로 대폭 개선됨.
-
-* **공유 모델**: 초대 링크 기반 친구 관계 구축, 폴더 생성 시 유형 고정(*일반* = 공개 규칙이 적용된 복제/미러링, *공유* = 공동 편집)으로 의도치 않은 공개 방지, 미러링 항목에 대한 개인별 덮어쓰기 지원.
-
-* **보안 기틀**: scrypt + 계정별 솔트 + `timingSafeEqual`, 해시 기반 세션 및 공유 키 저장, 로그인 시도 제한, CSP 설정, non-root 컨테이너 및 `127.0.0.1` 루프백 바인딩 적용.
-
-* **모바일 연동**: PWA `share_target`, 수작업 작성된 Android TWA (Digital Asset Links 적용), iOS 단축어 수집 지원.
-
-* **성능 최적화**: 부하 테스트 시 60명의 혼합 사용자 기준 `/api/state` **1,594 req/s** 처리, 1,000개 동시 접속 상태에서 오류율 0% 및 RSS 235MB 기록. 캐싱 적용으로 처리량 +27% 향상, 61개 쿼리가 실행되던 경로를 1개 쿼리로 단축 (5.27ms → 0.50ms).
-
-* **운영 안정성**: Docker Compose + Cloudflare Tunnel 라우팅 버전 관리, 22개 백업 데이터베이스 복구 테스트 완료(21개 부팅 성공), 43건의 트러블슈팅 내역 문서화.
+| 항목 | 내용 |
+|---|---|
+| **외부 의존성 제로 (Zero-dependency)** | Node.js 24 타입 스트리핑을 활용하여 빌더/트랜스파일러/npm 패키지 없이 순수 내장 모듈(`node:http`, `node:sqlite` WAL, `node:crypto`)과 TypeScript만으로 구축. 서버 약 5,000 LOC, 바닐라 JS 클라이언트 7,100줄, 12개 스키마 마이그레이션 적용. |
+| **중복 제거 수집 파이프라인** | `intakeShared()` 함수가 깨진 링크(`ENOTFOUND`, 404, 410)를 차단하고 메타데이터를 수집함. 5명의 사용자가 동일한 작품을 저장해도 메타데이터 수집은 1회만 수행되어, 기존 URL 저장 속도가 64ms에서 5ms로 대폭 개선됨. |
+| **공유 모델** | 초대 링크 기반 친구 관계 구축, 폴더 생성 시 유형 고정(*일반* = 공개 규칙이 적용된 복제/미러링, *공유* = 공동 편집)으로 의도치 않은 공개 방지, 미러링 항목에 대한 개인별 덮어쓰기 지원. |
+| **보안 기틀** | scrypt + 계정별 솔트 + `timingSafeEqual`, 해시 기반 세션 및 공유 키 저장, 로그인 시도 제한, CSP 설정, non-root 컨테이너 및 `127.0.0.1` 루프백 바인딩 적용. |
+| **모바일 연동** | PWA `share_target`, 수작업 작성된 Android TWA (Digital Asset Links 적용), iOS 단축어 수집 지원. |
+| **성능 최적화** | 부하 테스트 시 60명의 혼합 사용자 기준 `/api/state` **1,594 req/s** 처리, 1,000개 동시 접속 상태에서 오류율 0% 및 RSS 235MB 기록. 캐싱 적용으로 처리량 +27% 향상, 61개 쿼리가 실행되던 경로를 1개 쿼리로 단축 (5.27ms → 0.50ms). |
+| **운영 안정성** | Docker Compose + Cloudflare Tunnel 라우팅 버전 관리, 22개 백업 데이터베이스 복구 테스트 완료(21개 부팅 성공), 43건의 트러블슈팅 내역 문서화. |
 
 #### 기술 스택 (Tech Stack)
 
@@ -349,7 +356,7 @@ iOS 단축어 ───────┘                                     │ h
 
 ---
 
-### 5. 기반 서울시 지하철 승하차 데이터 분석
+### 5. Apache Spark 기반 서울시 지하철 승하차 데이터 분석
 
 | 항목 | 내용 |
 |---|---|
@@ -371,26 +378,28 @@ iOS 단축어 ───────┘                                     │ h
 Project 01은 AI 에이전트 및 워크플로우 자동화 경험을 겸하도록 기획되었습니다.
 
 #### 아키텍처 (Architecture)
-```
-web-main nginx :80 ─┬─ /      ─▶ 프론트엔드 nginx (React SPA · Recharts · 카카오 맵)
-                    ├─ /api/  ─▶ FastAPI :8000 (PySpark 드라이버, 클라이언트 모드) ──spark://spark-master:7077──▶ spark-master + 워커 2대 (각 2GB / 2코어)
-                    │                    │  JDBC (조건절 / 서브쿼리 푸시다운) ──▶ MariaDB metro_db: seoul_metro (330만 행) → metro_flow_YYYY ×17 → v_metro_analysis_all
-                    └─ /n8n/  ─▶ n8n :5678 ─▶ Ollama (Gemma 3:4b) + Postgres 대화 메모리 ─▶ JSON {info, where, name} ─▶ SPA (마크다운 + 지도 마커)
+
+```mermaid
+flowchart LR
+    N["web-main nginx :80"] -- "/" --> FE["프론트엔드 nginx<br/>React SPA · Recharts · 카카오 맵"]
+    N -- "/api/" --> API["FastAPI :8000<br/>PySpark 드라이버 · 클라이언트 모드"]
+    N -- "/n8n/" --> N8["n8n :5678"]
+    API -- "spark://spark-master:7077" --> SM["spark-master"] --> W["워커 ×2<br/>각 2GB / 2코어"]
+    API -- "JDBC 조건절 / 서브쿼리 푸시다운" --> DB[("MariaDB metro_db<br/>seoul_metro 330만 행<br/>→ metro_flow_YYYY ×17 → v_metro_analysis_all")]
+    N8 --> OL["Ollama (Gemma 3:4b)<br/>+ Postgres 대화 메모리"]
+    OL -- "JSON {info, where, name}" --> FE
 ```
 
 #### 주요 작업 및 성과 (Key Work & Outcomes)
 
-* **담당 트랙 백엔드 개발 (`main_jh.py`)**: `/drunk_info` (주말/금요일 20~23시 평균 승하차 상위 10개 역 반환), `/get_station` (역 목록 조회), `POST /search_complex` (환승 경로 혼잡도와 전체 평균 비교, 24시 예외 처리 포함). **JDBC 읽기 시 1년 단위 날짜 서브쿼리 푸시다운**을 적용하여 기존 파티셔닝 방식 대비 조회 속도를 획기적으로 개선.
-
-* **Docker 환경 내 Spark 클라이언트 모드 구축**: 드라이버/블록매니저 포트 고정(10000~10002), `bindAddress 0.0.0.0`, 드라이버 메모리 4G 할당, RPC/네트워크 타임아웃 및 셔플 재시도 설정. MariaDB JDBC 3.5.7 연동 및 UTF-8, `ANSI_QUOTES` 설정을 적용하여 한글 컬럼명 파싱 처리.
-
-* **AI 에이전트 연동**: Ollama Gemma 3:4b 및 Postgres 대화 메모리가 연결된 n8n 웹훅 2종 구현. 프론트엔드가 `{info, where, name}` 구조의 JSON을 파싱하여 ReactMarkdown 및 카카오 맵 마커로 렌더링하도록 구축.
-
-* **프론트엔드 개발**: `Jh_data.jsx` (858줄, 서브 컴포넌트 5개) — 연도 선택기, 핫스팟 바 차트, AI 대화 UI, 지도, 경로 검색 및 시간대별 혼잡도 차트 구현. 포트폴리오 메인 허브(`Home.jsx`) 및 환경 변수 기반 axios 인스턴스 구축.
-
-* **통합 관리 역할**: 팀원 브랜치를 포함한 60개 PR 중 33개 병합 전담, 하드코딩된 설정값을 pydantic-settings 기반 `.env` 구조로 전환.
-
-* **시스템 성과 (팀 전체)**: 9개 Docker 서비스 구축, 9개 API 엔드포인트 및 17개 연도별 테이블/통합 뷰 구축, 기존 DB 직접 조회 방식 대비 **데이터 처리 시간 약 75% 단축** 달성. WBS 모든 항목 완료.
+| 항목 | 내용 |
+|---|---|
+| **담당 트랙 백엔드 개발 (`main_jh.py`)** | `/drunk_info` (주말/금요일 20~23시 평균 승하차 상위 10개 역 반환), `/get_station` (역 목록 조회), `POST /search_complex` (환승 경로 혼잡도와 전체 평균 비교, 24시 예외 처리 포함). **JDBC 읽기 시 1년 단위 날짜 서브쿼리 푸시다운**을 적용하여 기존 파티셔닝 방식 대비 조회 속도를 획기적으로 개선. |
+| **Docker 환경 내 Spark 클라이언트 모드 구축** | 드라이버/블록매니저 포트 고정(10000~10002), `bindAddress 0.0.0.0`, 드라이버 메모리 4G 할당, RPC/네트워크 타임아웃 및 셔플 재시도 설정. MariaDB JDBC 3.5.7 연동 및 UTF-8, `ANSI_QUOTES` 설정을 적용하여 한글 컬럼명 파싱 처리. |
+| **AI 에이전트 연동** | Ollama Gemma 3:4b 및 Postgres 대화 메모리가 연결된 n8n 웹훅 2종 구현. 프론트엔드가 `{info, where, name}` 구조의 JSON을 파싱하여 ReactMarkdown 및 카카오 맵 마커로 렌더링하도록 구축. |
+| **프론트엔드 개발** | `Jh_data.jsx` (858줄, 서브 컴포넌트 5개) — 연도 선택기, 핫스팟 바 차트, AI 대화 UI, 지도, 경로 검색 및 시간대별 혼잡도 차트 구현. 포트폴리오 메인 허브(`Home.jsx`) 및 환경 변수 기반 axios 인스턴스 구축. |
+| **통합 관리 역할** | 팀원 브랜치를 포함한 60개 PR 중 33개 병합 전담, 하드코딩된 설정값을 pydantic-settings 기반 `.env` 구조로 전환. |
+| **시스템 성과 (팀 전체)** | 9개 Docker 서비스 구축, 9개 API 엔드포인트 및 17개 연도별 테이블/통합 뷰 구축, 기존 DB 직접 조회 방식 대비 **데이터 처리 시간 약 75% 단축** 달성. WBS 모든 항목 완료. |
 
 #### 기술 스택 (Tech Stack)
 
@@ -419,4 +428,3 @@ web-main nginx :80 ─┬─ /      ─▶ 프론트엔드 nginx (React SPA · R
   사용자 중복 제출 문제. 조회 중인 상태(`isLoading`)에 따라 버튼을 비활성화(`disabled`)하고, `ResponsiveContainer` 키를 재설정하여 차트가 깨끗하게 리렌더링되도록 수정함. 동적 SQL 파싱 전 연도 화이트리스트 검증 로직 추가.
 
 [↑ 목차로](#projects)
-
