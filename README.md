@@ -2,7 +2,7 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1D3557,100:2B5FB8&height=200&section=header&text=Kim%20Jihwan&fontSize=56&fontColor=ffffff&fontAlignY=36&desc=AI%20Agent%20Engineer&descSize=20&descAlignY=60&animation=fadeIn" width="100%" alt="Kim Jihwan" />
 
-<img src="https://readme-typing-svg.demolab.com?font=Noto+Sans+KR&weight=700&size=20&duration=4200&pause=1200&color=2B5FB8&center=true&vCenter=true&width=900&height=44&repeat=true&lines=UI%2FUX+%EC%84%A4%EA%B3%84%EB%B6%80%ED%84%B0+%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%EC%99%80+%EB%B0%B1%EC%97%94%EB%93%9C%2C+%EA%B7%B8%EB%A6%AC%EA%B3%A0+AI%EA%B9%8C%EC%A7%80+%EA%B8%B0%EC%B4%88%EB%B6%80%ED%84%B0+%EB%8B%A4%EC%A7%84+AI+Agent+Engineer+%EA%B9%80%EC%A7%80%ED%99%98%EC%9E%85%EB%8B%88%EB%8B%A4" alt="typing" />
+<img src="https://readme-typing-svg.demolab.com?font=Noto+Sans+KR&weight=700&size=19&duration=4200&pause=1200&color=2B5FB8&center=true&vCenter=true&width=900&height=44&repeat=false&lines=AI%2FAX+%EC%84%A4%EA%B3%84+%EB%B0%8F+%EB%94%94%EC%9E%90%EC%9D%B8%EB%B6%80%ED%84%B0+%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%EC%99%80+%EB%B0%B1%EC%97%94%EB%93%9C%2C+%EA%B7%B8%EB%A6%AC%EA%B3%A0+AI%EA%B9%8C%EC%A7%80+%EA%B8%B0%EC%B4%88%EB%B6%80%ED%84%B0+%EB%8B%A4%EC%A7%84+AI+Agent+Engineer+%EA%B9%80%EC%A7%80%ED%99%98%EC%9E%85%EB%8B%88%EB%8B%A4" alt="typing" />
 
 
 <table>
