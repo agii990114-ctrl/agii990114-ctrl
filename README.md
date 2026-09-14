@@ -39,14 +39,14 @@
 <a href="#1-햇들농산---농산물-저장-유통을-위한-무인-일일-가격-예측-ml-파이프라인"><img src="https://img.shields.io/badge/01%20%20%ED%96%87%EB%93%A4%EB%86%8D%EC%82%B0-1D3557?style=flat-square" alt="01  햇들농산" /></a>
 <a href="#2-highgooh--esg-공급망-데이터-및-탄소-배출-모니터링-erp"><img src="https://img.shields.io/badge/02%20%20Highgooh-2B5FB8?style=flat-square" alt="02  Highgooh" /></a>
 <a href="#3-career-jikimi--사내-채팅-메시지-오발송-방지-ai-가드"><img src="https://img.shields.io/badge/03%20%20Career--Jikimi-1D3557?style=flat-square" alt="03  Career-Jikimi" /></a>
-<a href="#4-habhobby--셀프-호스팅-링크-라운처--공유-컬렉션"><img src="https://img.shields.io/badge/04%20%20HabHobby-2B5FB8?style=flat-square" alt="04  HabHobby" /></a>
+<a href="#4-habhobby--북마크-분류-자동-저장-및--공유관리-어플"><img src="https://img.shields.io/badge/04%20%20HabHobby-2B5FB8?style=flat-square" alt="04  HabHobby" /></a>
 <a href="#5-apache-spark-기반-서울시-지하철-승하차-데이터-분석"><img src="https://img.shields.io/badge/05%20%20Apache%20Spark%20%EA%B8%B0%EB%B0%98%20%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%A7%80%ED%95%98%EC%B2%A0%20%EC%8A%B9%ED%95%98%EC%B0%A8%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B6%84%EC%84%9D-1D3557?style=flat-square" alt="05  Apache Spark 기반 서울시 지하철 승하차 데이터 분석" /></a>
 </p> -->
 
 1. [햇들농산 - 농산물 저장 유통을 위한 무인 일일 가격 예측 ML 파이프라인](#1-햇들농산---농산물-저장-유통을-위한-무인-일일-가격-예측-ml-파이프라인)
 2. [Highgooh — ESG 공급망 데이터 및 탄소 배출 모니터링 ERP](#2-highgooh--esg-공급망-데이터-및-탄소-배출-모니터링-erp)
 3. [Career-Jikimi — 사내 채팅 메시지 오발송 방지 AI 가드](#3-career-jikimi--사내-채팅-메시지-오발송-방지-ai-가드)
-4. [HabHobby — 셀프 호스팅 링크 라운처 & 공유 컬렉션](#4-habhobby--셀프-호스팅-링크-라운처--공유-컬렉션)
+4. [HabHobby — 북마크 자동 분류저장 및 공유관리 어플](#4-habhobby--셀프-호스팅-링크-라운처--공유-컬렉션)
 5. [Apache Spark 기반 서울시 지하철 승하차 데이터 분석](#5-apache-spark-기반-서울시-지하철-승하차-데이터-분석)
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:1D3557,100:2B5FB8&height=3" width="100%" alt="" />
@@ -301,7 +301,7 @@ flowchart LR
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:1D3557,100:2B5FB8&height=3" width="100%" alt="" />
 
-### 4. HabHobby — 셀프 호스팅 링크 라운처 & 공유 컬렉션
+### 4. HabHobby — 북마크 자동 분류저장 및 공유관리 어플
 
 <table align="center">
 <thead><tr><th>항목</th><th>내용</th></tr></thead>
