@@ -18,7 +18,7 @@
 | :--- | :--- |
 | **AI Agent & Data Pipeline** | LangGraph/LangChain 기반의 Agentic Workflow 구축, RAG 및 Fine-tuning, 자동화 파이프라인 설계에 강점이 있습니다. |
 | **User-Centric Growth** | UI/UX 디자인으로 시작해 프론트엔드·백엔드, AI Agent까지 확장해 왔습니다. 단순 기술 구현을 넘어 사용자 경험 관점에서 비즈니스 문제를 정의하고 최적의 엔지니어링 솔루션을 도출합니다. |
-| **End-to-End Service Engineering** | UI/UX 설계부터 백엔드 API, DB 트랜잭션, Docker 인프라 및 자동화 파이프라인 구축까지 서비스의 전체 생애주기를 직접 설계하고 운영합니다. |
+| **End-to-End Service Engineering** | 프론트부터 백엔드 API, DB 트랜잭션, Docker 인프라 및 자동화 파이프라인 구축까지 서비스의 전체 생애주기를 직접 설계하고 운영합니다. |
 
 ## 📜 Education & Certifications
 
