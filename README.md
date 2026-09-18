@@ -14,31 +14,39 @@
 
 ## 💡 About Me
 
-* **AI Agent & Data Pipeline**: LangGraph/LangChain 기반의 Agentic Workflow 구축, RAG 및 Fine-tuning, 자동화 파이프라인 설계에 강점이 있습니다.
-* **Full-Stack Capability**: React/TypeScript 프론트엔드부터 FastAPI/Spring Boot 백엔드, Docker 기반 인프라까지 전 과정을 직접 소화합니다.
-* **User-Centric Growth**: UI/UX 디자인으로 시작해 프론트엔드·백엔드, 그리고 AI Agent까지 확장해 왔습니다. 단순 기술 구현을 넘어 사용자 경험(UX) 관점에서 비즈니스 문제를 정의하고 최적의 엔지니어링 솔루션을 도출합니다.
+| Core Value | Description |
+| :--- | :--- |
+| **AI Agent & Data Pipeline** | LangGraph/LangChain 기반의 Agentic Workflow 구축, RAG 및 Fine-tuning, 자동화 파이프라인 설계에 강점이 있습니다. |
+| **User-Centric Growth** | UI/UX 디자인으로 시작해 프론트엔드·백엔드, AI Agent까지 확장해 왔습니다. 단순 기술 구현을 넘어 사용자 경험 관점에서 비즈니스 문제를 정의하고 최적의 엔지니어링 솔루션을 도출합니다. |
+| **End-to-End Service Engineering** | UI/UX 설계부터 백엔드 API, DB 트랜잭션, Docker 인프라 및 자동화 파이프라인 구축까지 서비스의 전체 생애주기를 직접 설계하고 운영합니다. |
 
 ## 📜 Education & Certifications
 
-* **교육 과정**:
-  * 생성형 AI 활용 심화 과정 (하이미디어, 2026.07 - 2026.09)
-  * ESG 데이터 활용 AX Academy with AI Agent (삼정, 2025.12 - 2026.06)
-  * UX/UI 웹 퍼블리싱 과정 (2025.03 - 2025.07)
-* **학력**: 강원대학교 음악학과 학사 졸업 (2017.03 - 2024.08)
-* **자격증**: SQLD, 정보처리기사(필기), 컴퓨터활용능력 2급, GTQ 1급, 전산세무 2급, 전산회계 1급 등
+| 구분 | 내용 | 기간 / 기타 |
+| :--- | :--- | :--- |
+| **교육 과정** | **[하이미디어]** 심화_생성형 AI활용 인재양성 과정 | 2026.07 - 2026.09 |
+| | **[삼정KPMG]** ESG 데이터 활용 AX Academy with AI Agent | 2025.12 - 2026.06 |
+| | **[하이미디어]** UX/UI 웹 퍼블리싱 과정 | 2025.03 - 2025.07 |
+| **학력** | **강원대학교** 음악학과 학사 졸업 | 2017.03 - 2024.08 |
+| **자격증** | SQLD · 정보처리기사(필기) · 컴퓨터활용능력 2급<br>GTQ 1급 · 전산세무 2급 · 전산회계 1급 | |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Domain | Technologies |
-| :--- | :--- |
-| **AI-Agent / LLM** | LangGraph, LangChain, RAG, Embedding, Ollama |
-| **Data / ML** | PyTorch, Fine-tuning, PySpark, pandas |
-| **Backend** | Python, FastAPI, Spring Boot |
-| **Frontend** | React, JavaScript, TypeScript |
-| **Database** | MariaDB, PostgreSQL, SQLite |
-| **Infra / DevOps** | Docker, AWS, Airflow, GitHub Actions, Nginx |
+
+<table>
+<thead><tr><th>분야</th><th>기술 스택</th></tr></thead>
+<tbody>
+<tr><td>AI Agent / LLM</td><td><img src="https://img.shields.io/badge/LangGraph-1C3C3C?logo=langchain&logoColor=white" alt="LangGraph" /> <img src="https://img.shields.io/badge/LangChain-1C3C3C?logo=langchain&logoColor=white" alt="LangChain" /> <img src="https://img.shields.io/badge/RAG-4B5563" alt="RAG" /> <img src="https://img.shields.io/badge/Embedding-4B5563" alt="Embedding" /> <img src="https://img.shields.io/badge/Ollama-000000?logo=ollama&logoColor=white" alt="Ollama" /></td></tr>
+<tr><td>Data / ML</td><td><img src="https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white" alt="PyTorch" /> <img src="https://img.shields.io/badge/Fine--tuning-4B5563" alt="Fine-tuning" /> <img src="https://img.shields.io/badge/PySpark-E25A1C?logo=apachespark&logoColor=white" alt="PySpark" /> <img src="https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white" alt="pandas" /></td></tr>
+<tr><td>Backend</td><td><img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python" /> <img src="https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white" alt="FastAPI" /> <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=white" alt="Spring Boot" /> <img src="https://img.shields.io/badge/Kafka-231F20?logo=apachekafka&logoColor=white" alt="Kafka" /></td></tr>
+<tr><td>Frontend</td><td><img src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB" alt="React" /> <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" alt="TypeScript" /></td></tr>
+<tr><td>Database</td><td><img src="https://img.shields.io/badge/MariaDB-003545?logo=mariadb&logoColor=white" alt="MariaDB" /> <img src="https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white" alt="PostgreSQL" /></td></tr>
+<tr><td>Infra / DevOps</td><td><img src="https://img.shields.io/badge/AWS-232F3E?logo=amazonwebservices&logoColor=white" alt="AWS" /> <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" alt="Docker" /> <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="GitHub Actions" /> <img src="https://img.shields.io/badge/Airflow-017CEE?logo=apacheairflow&logoColor=white" alt="Airflow" /></td></tr>
+<tr><td>Design</td><td><img src="https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white" alt="Figma" /> <img src="https://img.shields.io/badge/Photoshop-31A8FF?logo=adobephotoshop&logoColor=white" alt="Photoshop" /></td></tr>
+</tbody>
+</table>
 
 ---
 
