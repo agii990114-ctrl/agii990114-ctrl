@@ -36,7 +36,7 @@
 | **AI-Agent / LLM** | LangGraph, LangChain, RAG, Embedding, Ollama |
 | **Data / ML** | PyTorch, Fine-tuning, PySpark, pandas |
 | **Backend** | Python, FastAPI, Spring Boot |
-| **Frontend** | React, TypeScript |
+| **Frontend** | React, JavaScript, TypeScript |
 | **Database** | MariaDB, PostgreSQL, SQLite |
 | **Infra / DevOps** | Docker, AWS, Airflow, GitHub Actions, Nginx |
 
