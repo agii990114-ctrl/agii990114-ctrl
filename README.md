@@ -70,7 +70,7 @@
   * ModernBERT 기반 미세조정으로 평가 데이터셋 기준 **AUC 1.000, Precision 1.000 (오탐 0건)** 달성
   * FastAPI + MariaDB 기반 WebSocket 실시간 채팅 백엔드 및 동시성 제어 잠금 구현
 
-### 4. [HabHobby — 개인 서버용 링크 라운처 & 공유 컬렉션](https://github.com/agii990114-ctrl)
+### 4. [HabHobby — 개인 서버용 링크 라운처 & 공유 컬렉션](https://github.com/agii990114-ctrl/habhobby.git)
 * **기간 / 규모**: 2026.09 (1인 개인 프로젝트)
 * **한 줄 요약**: 공유된 URL을 작품·도메인별 카드로 자동 분류 및 공유하는 링크 라운처
 * **주요 성과**:
