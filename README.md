@@ -52,7 +52,7 @@
 
 ## 🚀 Key Projects
 
-### 1. [햇들농산 — 무인 농산물 가격 예측 기반 의사결정 지원 시스템 & QA 에이전트](https://github.com/nobadai/mainproject)
+### 1. [햇들농산 — 무인 농산물 가격 예측 기반 의사결정 지원 시스템 & AI-Agent](https://github.com/nobadai/mainproject)
 * **소개**: 배추·무·양파 유통 가격을 최대 18영업일 후까지 예측하여 최적의 출하·매입 시점 결정을 돕는 일일 자동화 ML 시스템 및 LangGraph 기반 AI_Agent
 * **기간 / 규모**: 2026.08 - 2026.09 (5인 프로젝트)
 * **담당 역할 (ML 파트 단독 전담)**:
