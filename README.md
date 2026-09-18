@@ -16,7 +16,7 @@
 
 * **AI Agent & Data Pipeline**: LangGraph/LangChain 기반의 Agentic Workflow 구축, RAG 및 Fine-tuning, 자동화 파이프라인 설계에 강점이 있습니다.
 * **Full-Stack Capability**: React/TypeScript 프론트엔드부터 FastAPI/Spring Boot 백엔드, Docker 기반 인프라까지 전 과정을 직접 소화합니다.
-* **Problem Solver**: 음악학 전공 및 행정/부사관 조직 운영 경험을 바탕으로, 복잡한 비즈니스 문제를 명확하게 정의하고 도메인에 특화된 기술로 해결합니다.
+* **User-Centric Growth**: UI/UX 디자인으로 시작해 프론트엔드·백엔드, 그리고 AI Agent까지 확장해 왔습니다. 단순 기술 구현을 넘어 사용자 경험(UX) 관점에서 비즈니스 문제를 정의하고 최적의 엔지니어링 솔루션을 도출합니다.
 
 ## 📜 Education & Certifications
 
